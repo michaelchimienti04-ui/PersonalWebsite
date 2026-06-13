@@ -74,7 +74,7 @@ const SOLD = [
     price: '$175,000',
     ask: '',
     beds: '2', baths: '1.5', sqft: '1,300',
-    desc: 'As the listing agent, I carried this Woodhaven home all the way to the finish line. When the first deal fell through just ten days before closing, I had it back on the market, under contract, and into the new buyers’ hands in only 15 days from accepted offer to keys. Steady, calm, and protecting my seller every step.',
+    desc: 'I was the listing agent on this Woodhaven home, and getting it closed took some patience. When the first deal fell through just ten days before closing, I got it back on the market, under contract, and into the new buyers’ hands in only 15 days from accepted offer to keys. Steady and focused on protecting my seller every step.',
     flip: false,
     photos: [{ img: 'pictures/sold-26709-ashton.jpg', tag: '26709 Ashton Dr' }],
   },
