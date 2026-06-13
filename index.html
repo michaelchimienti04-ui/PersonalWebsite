@@ -305,7 +305,9 @@ a { color: inherit; text-decoration: none; }
 .areas:hover .marquee { animation-play-state: paused; }
 
 /* ---------- trust band / stats ---------- */
-.trust-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 56px; align-items: center; }
+.trust-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 56px; align-items: center; }
+.trust-photo .ph { aspect-ratio: 4/5; border-radius: var(--radius); }
+.trust-stats { margin-top: 52px; }
 .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
 .stat { background: var(--paper); border-radius: var(--radius); padding: 26px 22px; border: 1px solid var(--line); }
 .stat-num { font-family: var(--font-display); font-weight: 700; font-size: clamp(34px, 4vw, 48px); line-height: 1; color: var(--teal); letter-spacing: -.01em; }
@@ -605,37 +607,30 @@ const VALUE = {
   },
 };
 
-/* Recent sales. Replace with your real closings + photos. */
+/* Recent sales. Real closings with photos.
+   TODO (Michael): fill in loc (city/county), price, ask (original list price,
+   for the "over ask" badge), beds, baths, sqft, and the desc story for each.
+   Leaving a field empty just hides it, so the card still looks clean. */
 const SOLD = [
   {
-    addr: '4218 Yorkshire Road',
-    loc: 'Grosse Pointe · Wayne County',
-    price: '$642,000',
-    ask: '$619,000',
-    beds: '4', baths: '3', sqft: '2,940',
-    desc: 'A center-entrance colonial steps from the lake. We staged, photographed, and brought it to market on a Thursday. By Monday we were reviewing six offers, and closed $23K over ask with an accelerated timeline for the sellers.',
+    addr: '26709 Ashton Dr',
+    loc: '',                 // e.g. 'Dearborn Heights · Wayne County'
+    price: '',               // e.g. '$285,000'  (leave '' to show "Sold")
+    ask: '',                 // e.g. '$279,900'  (original list price)
+    beds: '', baths: '', sqft: '',
+    desc: '',                // your story for this sale, added later
     flip: false,
-    photos: ['Front elevation', 'Kitchen'],
+    photos: [{ img: 'pictures/sold-26709-ashton.jpg', tag: '26709 Ashton Dr' }],
   },
   {
-    addr: '871 Lakepointe Avenue',
-    loc: 'Detroit · Wayne County',
-    price: '$311,500',
-    ask: '$299,900',
-    beds: '3', baths: '2', sqft: '1,720',
-    desc: 'First-time buyers who had been outbid three times. We moved fast, wrote a clean offer with a personal letter, and got them the keys to a restored brick bungalow in a neighborhood they love.',
+    addr: '938 E 2nd Street',
+    loc: '',
+    price: '',
+    ask: '',
+    beds: '', baths: '', sqft: '',
+    desc: '',
     flip: true,
-    photos: ['Living room'],
-  },
-  {
-    addr: '15530 Fairway Drive',
-    loc: 'Livonia · Wayne County',
-    price: '$528,000',
-    ask: '$524,900',
-    beds: '5', baths: '4', sqft: '3,310',
-    desc: 'A relocation listing on a tight schedule. Coordinated repairs, full-property marketing, and a private broker preview that produced a cash buyer within the first week on market.',
-    flip: false,
-    photos: ['Front elevation', 'Backyard'],
+    photos: [{ img: 'pictures/sold-938-e-2nd.jpg', tag: '938 E 2nd Street' }],
   },
 ];
 
@@ -770,7 +765,7 @@ function Hero({ go }) {
 
         <div className="hero-media reveal in d1">
           <div className="hero-photo">
-            <Placeholder tag="Portrait of Michael, replace in /pictures" />
+            <Placeholder img="pictures/headshot.jpg" tag="Michael Chimienti" />
           </div>
           <div className="hero-chip">
             <div className="hc-num">24&nbsp;hr</div>
@@ -805,18 +800,23 @@ function Areas() {
 function TrustBand() {
   return (
     <section className="section" id="why">
-      <div className="wrap trust-grid">
-        <div className="reveal">
-          <p className="eyebrow">Why Work With Me</p>
-          <h2 className="h2">A local who treats your move<br />like it's <span className="mark-sun">his own.</span></h2>
-          <p className="lede" style={{ marginTop: '22px' }}>
-            I'm a Southeast Michigan specialist and a proud part of {SITE.group}.
-            Whether it's your first home or your fourth, the job is the same: protect
-            your interests, tell you the truth, and get the deal done.
-          </p>
-          <p className="trust-brokered">Brokered by <b>{SITE.group}</b></p>
+      <div className="wrap">
+        <div className="trust-grid">
+          <div className="reveal">
+            <p className="eyebrow">Why Work With Me</p>
+            <h2 className="h2">A local who treats your move<br />like it's <span className="mark-sun">his own.</span></h2>
+            <p className="lede" style={{ marginTop: '22px' }}>
+              I'm a Southeast Michigan specialist and a proud part of {SITE.group}.
+              Whether it's your first home or your fourth, the job is the same: protect
+              your interests, tell you the truth, and get the deal done.
+            </p>
+            <p className="trust-brokered">Brokered by <b>{SITE.group}</b></p>
+          </div>
+          <div className="reveal d1 trust-photo">
+            <Placeholder img="pictures/michael-full.jpg" tag="Michael Chimienti" />
+          </div>
         </div>
-        <div className="reveal d1">
+        <div className="reveal trust-stats">
           <StatsRow />
         </div>
       </div>
@@ -1001,25 +1001,27 @@ function Work() {
                 <div className="sold-media">
                   <div className={`sold-media-stack ${p.photos.length > 1 ? 'two' : ''}`}>
                     {p.photos.map((ph, j) => (
-                      <Placeholder key={j} tag={ph} style={{ borderRadius: '16px', aspectRatio: p.photos.length > 1 ? '4/5' : '16/11' }} />
+                      <Placeholder key={j} img={ph.img} tag={ph.tag} style={{ borderRadius: '16px', aspectRatio: p.photos.length > 1 ? '4/5' : '16/11' }} />
                     ))}
                   </div>
                 </div>
                 <div className="sold-info">
                   <span className="sold-tag"><span className="dot"></span>Sold</span>
                   <h3 className="sold-addr">{p.addr}</h3>
-                  <p className="sold-loc">{p.loc}</p>
+                  {p.loc && <p className="sold-loc">{p.loc}</p>}
                   <p className="sold-price">
-                    {p.price}
-                    <span className="strike">{p.ask}</span>
+                    {p.price || 'Sold'}
+                    {p.ask && <span className="strike">{p.ask}</span>}
                     {over && <span className="over">{over}</span>}
                   </p>
-                  <div className="sold-specs">
-                    <div><div className="spec-val">{p.beds}</div><div className="spec-label">Beds</div></div>
-                    <div><div className="spec-val">{p.baths}</div><div className="spec-label">Baths</div></div>
-                    <div><div className="spec-val">{p.sqft}</div><div className="spec-label">Sq Ft</div></div>
-                  </div>
-                  <p className="sold-desc">{p.desc}</p>
+                  {(p.beds || p.baths || p.sqft) && (
+                    <div className="sold-specs">
+                      {p.beds && <div><div className="spec-val">{p.beds}</div><div className="spec-label">Beds</div></div>}
+                      {p.baths && <div><div className="spec-val">{p.baths}</div><div className="spec-label">Baths</div></div>}
+                      {p.sqft && <div><div className="spec-val">{p.sqft}</div><div className="spec-label">Sq Ft</div></div>}
+                    </div>
+                  )}
+                  {p.desc && <p className="sold-desc">{p.desc}</p>}
                 </div>
               </div>
             </div>

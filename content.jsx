@@ -65,37 +65,30 @@ const VALUE = {
   },
 };
 
-/* Recent sales. Replace with your real closings + photos. */
+/* Recent sales. Real closings with photos.
+   TODO (Michael): fill in loc (city/county), price, ask (original list price,
+   for the "over ask" badge), beds, baths, sqft, and the desc story for each.
+   Leaving a field empty just hides it, so the card still looks clean. */
 const SOLD = [
   {
-    addr: '4218 Yorkshire Road',
-    loc: 'Grosse Pointe · Wayne County',
-    price: '$642,000',
-    ask: '$619,000',
-    beds: '4', baths: '3', sqft: '2,940',
-    desc: 'A center-entrance colonial steps from the lake. We staged, photographed, and brought it to market on a Thursday. By Monday we were reviewing six offers, and closed $23K over ask with an accelerated timeline for the sellers.',
+    addr: '26709 Ashton Dr',
+    loc: '',                 // e.g. 'Dearborn Heights · Wayne County'
+    price: '',               // e.g. '$285,000'  (leave '' to show "Sold")
+    ask: '',                 // e.g. '$279,900'  (original list price)
+    beds: '', baths: '', sqft: '',
+    desc: '',                // your story for this sale, added later
     flip: false,
-    photos: ['Front elevation', 'Kitchen'],
+    photos: [{ img: 'pictures/sold-26709-ashton.jpg', tag: '26709 Ashton Dr' }],
   },
   {
-    addr: '871 Lakepointe Avenue',
-    loc: 'Detroit · Wayne County',
-    price: '$311,500',
-    ask: '$299,900',
-    beds: '3', baths: '2', sqft: '1,720',
-    desc: 'First-time buyers who had been outbid three times. We moved fast, wrote a clean offer with a personal letter, and got them the keys to a restored brick bungalow in a neighborhood they love.',
+    addr: '938 E 2nd Street',
+    loc: '',
+    price: '',
+    ask: '',
+    beds: '', baths: '', sqft: '',
+    desc: '',
     flip: true,
-    photos: ['Living room'],
-  },
-  {
-    addr: '15530 Fairway Drive',
-    loc: 'Livonia · Wayne County',
-    price: '$528,000',
-    ask: '$524,900',
-    beds: '5', baths: '4', sqft: '3,310',
-    desc: 'A relocation listing on a tight schedule. Coordinated repairs, full-property marketing, and a private broker preview that produced a cash buyer within the first week on market.',
-    flip: false,
-    photos: ['Front elevation', 'Backyard'],
+    photos: [{ img: 'pictures/sold-938-e-2nd.jpg', tag: '938 E 2nd Street' }],
   },
 ];
 

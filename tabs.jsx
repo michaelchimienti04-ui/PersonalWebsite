@@ -32,7 +32,7 @@ function Hero({ go }) {
 
         <div className="hero-media reveal in d1">
           <div className="hero-photo">
-            <Placeholder tag="Portrait of Michael, replace in /pictures" />
+            <Placeholder img="pictures/headshot.jpg" tag="Michael Chimienti" />
           </div>
           <div className="hero-chip">
             <div className="hc-num">24&nbsp;hr</div>
@@ -67,18 +67,23 @@ function Areas() {
 function TrustBand() {
   return (
     <section className="section" id="why">
-      <div className="wrap trust-grid">
-        <div className="reveal">
-          <p className="eyebrow">Why Work With Me</p>
-          <h2 className="h2">A local who treats your move<br />like it's <span className="mark-sun">his own.</span></h2>
-          <p className="lede" style={{ marginTop: '22px' }}>
-            I'm a Southeast Michigan specialist and a proud part of {SITE.group}.
-            Whether it's your first home or your fourth, the job is the same: protect
-            your interests, tell you the truth, and get the deal done.
-          </p>
-          <p className="trust-brokered">Brokered by <b>{SITE.group}</b></p>
+      <div className="wrap">
+        <div className="trust-grid">
+          <div className="reveal">
+            <p className="eyebrow">Why Work With Me</p>
+            <h2 className="h2">A local who treats your move<br />like it's <span className="mark-sun">his own.</span></h2>
+            <p className="lede" style={{ marginTop: '22px' }}>
+              I'm a Southeast Michigan specialist and a proud part of {SITE.group}.
+              Whether it's your first home or your fourth, the job is the same: protect
+              your interests, tell you the truth, and get the deal done.
+            </p>
+            <p className="trust-brokered">Brokered by <b>{SITE.group}</b></p>
+          </div>
+          <div className="reveal d1 trust-photo">
+            <Placeholder img="pictures/michael-full.jpg" tag="Michael Chimienti" />
+          </div>
         </div>
-        <div className="reveal d1">
+        <div className="reveal trust-stats">
           <StatsRow />
         </div>
       </div>
@@ -263,25 +268,27 @@ function Work() {
                 <div className="sold-media">
                   <div className={`sold-media-stack ${p.photos.length > 1 ? 'two' : ''}`}>
                     {p.photos.map((ph, j) => (
-                      <Placeholder key={j} tag={ph} style={{ borderRadius: '16px', aspectRatio: p.photos.length > 1 ? '4/5' : '16/11' }} />
+                      <Placeholder key={j} img={ph.img} tag={ph.tag} style={{ borderRadius: '16px', aspectRatio: p.photos.length > 1 ? '4/5' : '16/11' }} />
                     ))}
                   </div>
                 </div>
                 <div className="sold-info">
                   <span className="sold-tag"><span className="dot"></span>Sold</span>
                   <h3 className="sold-addr">{p.addr}</h3>
-                  <p className="sold-loc">{p.loc}</p>
+                  {p.loc && <p className="sold-loc">{p.loc}</p>}
                   <p className="sold-price">
-                    {p.price}
-                    <span className="strike">{p.ask}</span>
+                    {p.price || 'Sold'}
+                    {p.ask && <span className="strike">{p.ask}</span>}
                     {over && <span className="over">{over}</span>}
                   </p>
-                  <div className="sold-specs">
-                    <div><div className="spec-val">{p.beds}</div><div className="spec-label">Beds</div></div>
-                    <div><div className="spec-val">{p.baths}</div><div className="spec-label">Baths</div></div>
-                    <div><div className="spec-val">{p.sqft}</div><div className="spec-label">Sq Ft</div></div>
-                  </div>
-                  <p className="sold-desc">{p.desc}</p>
+                  {(p.beds || p.baths || p.sqft) && (
+                    <div className="sold-specs">
+                      {p.beds && <div><div className="spec-val">{p.beds}</div><div className="spec-label">Beds</div></div>}
+                      {p.baths && <div><div className="spec-val">{p.baths}</div><div className="spec-label">Baths</div></div>}
+                      {p.sqft && <div><div className="spec-val">{p.sqft}</div><div className="spec-label">Sq Ft</div></div>}
+                    </div>
+                  )}
+                  {p.desc && <p className="sold-desc">{p.desc}</p>}
                 </div>
               </div>
             </div>
