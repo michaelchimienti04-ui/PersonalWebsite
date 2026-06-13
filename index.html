@@ -1616,13 +1616,12 @@ function App() {
     history.replaceState(null, '', '#' + id);
   }, []);
 
-  // Honor an initial #hash on load.
+  // Always open at the top (the hero), never restore scroll or jump to a
+  // leftover #section hash from a previous visit.
   useEffect(() => {
-    const h = (location.hash || '').replace('#', '');
-    if (h) {
-      const id = setTimeout(() => scrollToId(h), 120);
-      return () => clearTimeout(id);
-    }
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    if (location.hash) history.replaceState(null, '', location.pathname + location.search);
+    window.scrollTo(0, 0);
   }, []);
 
   return (
