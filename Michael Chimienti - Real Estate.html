@@ -3,27 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Michael Chimienti — Real Estate</title>
+  <title>Michael Chimienti, Real Estate (dev)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Libre+Baskerville:ital,wght@0,400;1,400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <template id="__bundler_thumbnail">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
-      <rect width="400" height="400" fill="#1F3D2E"/>
-      <rect x="120" y="120" width="160" height="160" rx="10" fill="#FAF8F2"/>
-      <text x="200" y="223" font-family="Georgia, serif" font-size="92" font-weight="700" fill="#1F3D2E" text-anchor="middle">MC</text>
-    </svg>
-  </template>
+  <!--
+    DEV HARNESS, loads the source files directly for local development.
+    Because browsers block fetching local .jsx over file://, open this
+    through a local server, e.g.:  python -m http.server 8000
+    then visit  http://localhost:8000/Michael%20Chimienti%20-%20Real%20Estate.html
+
+    The deployable, self-contained page is index.html (run build-index.sh
+    to regenerate it after editing the source files).
+  -->
   <div id="root"></div>
 
-  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js"></script>
 
-  <script type="text/babel" src="tweaks-panel.jsx"></script>
   <script type="text/babel" src="content.jsx"></script>
   <script type="text/babel" src="tabs.jsx"></script>
   <script type="text/babel" src="app.jsx"></script>
