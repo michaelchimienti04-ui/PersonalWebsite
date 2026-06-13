@@ -65,28 +65,26 @@ const VALUE = {
   },
 };
 
-/* Recent sales. Real closings with photos.
-   TODO (Michael): fill in loc (city/county), price, ask (original list price,
-   for the "over ask" badge), beds, baths, sqft, and the desc story for each.
-   Leaving a field empty just hides it, so the card still looks clean. */
+/* Recent sales. Real closings with photos. `ask` is left blank on purpose
+   (no original-list-price advertised), so no "over ask" badge shows. */
 const SOLD = [
   {
     addr: '26709 Ashton Dr',
-    loc: '',                 // e.g. 'Dearborn Heights · Wayne County'
-    price: '',               // e.g. '$285,000'  (leave '' to show "Sold")
-    ask: '',                 // e.g. '$279,900'  (original list price)
-    beds: '', baths: '', sqft: '',
-    desc: '',                // your story for this sale, added later
+    loc: 'Woodhaven · Wayne County',
+    price: '$175,000',
+    ask: '',
+    beds: '2', baths: '1.5', sqft: '1,300',
+    desc: 'As the listing agent, I carried this Woodhaven home all the way to the finish line. When the first deal fell through just ten days before closing, I had it back on the market, under contract, and into the new buyers’ hands in only 15 days from accepted offer to keys. Steady, calm, and protecting my seller every step.',
     flip: false,
     photos: [{ img: 'pictures/sold-26709-ashton.jpg', tag: '26709 Ashton Dr' }],
   },
   {
     addr: '938 E 2nd Street',
-    loc: '',
-    price: '',
+    loc: 'Royal Oak · Oakland County',
+    price: '$820,000',
     ask: '',
-    beds: '', baths: '', sqft: '',
-    desc: '',
+    beds: '4', baths: '3.5', sqft: '2,700',
+    desc: 'Representing the buyers on this new-build steps from downtown Royal Oak, one of the most competitive areas around, I helped them win a crowded bidding war. We structured smart terms and a quick close that worked for both sides, and my clients walked away with the home they truly wanted.',
     flip: true,
     photos: [{ img: 'pictures/sold-938-e-2nd.jpg', tag: '938 E 2nd Street' }],
   },
