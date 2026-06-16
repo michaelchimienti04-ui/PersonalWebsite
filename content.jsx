@@ -107,13 +107,10 @@ const REELS = [
   { tag: 'My Detroit Renovation: weekly series', href: `https://instagram.com/${SITE.social}`, platform: 'Instagram', img: 'pictures/reel-renovation.jpg' },
 ];
 
-/* SAMPLE testimonials, replace the names and text with REAL reviews
-   from past clients before you publish. Do not present these sample
-   quotes as real. */
+/* Real client testimonials. */
 const TESTIMONIALS = [
-  { name: 'Daniel & Erin M.', where: 'Sold in Grosse Pointe', stars: 5, text: 'Michael made selling our family home feel effortless. He understood what the house was worth and exactly how to position it. We had multiple offers in a weekend.' },
-  { name: 'Priya S.', where: 'First-time buyer, Detroit', stars: 5, text: 'After being outbid again and again, Michael was the one who finally got us home. Patient, honest, and relentless when it mattered.' },
-  { name: 'The Caruso Family', where: 'Relocated to Livonia', stars: 5, text: 'We were moving from out of state and trusted Michael with everything. He treated our search like it was his own. Genuinely the hardest-working agent we have met.' },
+  { name: 'Jena Aderhold', where: 'Bought in Royal Oak', stars: 5, text: 'Michael was extremely helpful in helping us find our new home in Royal Oak. We had a specific criteria in a competitive area, and he was always on top of sending us and showing us new properties. Always available for a text or call, and answered all of our questions!' },
+  { name: 'Edward Mroczka', where: 'Sold his home', stars: 5, text: 'Michael was helpful every step of the way throughout the process of selling my home. Every time we encountered a problem, he handled the issue quickly and calmly. Would definitely recommend his services.' },
 ];
 
 /* ----------------------------------------------------------------

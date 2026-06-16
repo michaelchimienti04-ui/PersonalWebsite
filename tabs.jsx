@@ -388,6 +388,7 @@ function Reels() {
           <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
             <a className="btn btn-pine" href={`https://instagram.com/${SITE.social}`} target="_blank" rel="noreferrer">Instagram <Arrow /></a>
             <a className="btn btn-outline" href={`https://tiktok.com/@${SITE.social}`} target="_blank" rel="noreferrer">TikTok</a>
+            <a className="btn btn-outline" href={`https://facebook.com/${SITE.social}`} target="_blank" rel="noreferrer">Facebook</a>
           </div>
         </div>
       </div>
@@ -405,7 +406,7 @@ function Testimonials() {
           <h2 className="h2">The people behind<br />the <span className="mark-sun">transactions.</span></h2>
         </div>
 
-        <div className="quotes">
+        <div className={`quotes ${TESTIMONIALS.length === 2 ? 'quotes-2' : ''}`}>
           {TESTIMONIALS.map((q, i) => (
             <div className="quote reveal" key={i}>
               <Stars n={q.stars} />
@@ -732,6 +733,7 @@ function Footer({ go }) {
             <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
             <a href={`https://instagram.com/${SITE.social}`} target="_blank" rel="noreferrer">Instagram</a>
             <a href={`https://tiktok.com/@${SITE.social}`} target="_blank" rel="noreferrer">TikTok</a>
+            <a href={`https://facebook.com/${SITE.social}`} target="_blank" rel="noreferrer">Facebook</a>
           </div>
         </div>
         <div className="footer-bottom">

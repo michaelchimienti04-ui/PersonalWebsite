@@ -443,6 +443,8 @@ a { color: inherit; text-decoration: none; }
 .quotes { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
 .quote { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 32px 30px; display: flex; flex-direction: column; }
 .quote:first-child { grid-column: 1 / -1; background: var(--teal); color: var(--on-teal); border-color: var(--teal); }
+/* with exactly two testimonials, show them as balanced side-by-side cards */
+.quotes-2 .quote:first-child { grid-column: auto; }
 .quote-stars { color: var(--teal-mid); letter-spacing: 3px; font-size: 15px; margin-bottom: 16px; }
 .quote:first-child .quote-stars { color: var(--seafoam); }
 .quote-text { font-family: var(--font-display); font-weight: 600; font-size: clamp(18px, 1.8vw, 23px); line-height: 1.36; color: var(--ink); margin: 0 0 22px; letter-spacing: -.005em; }
@@ -649,13 +651,10 @@ const REELS = [
   { tag: 'My Detroit Renovation: weekly series', href: `https://instagram.com/${SITE.social}`, platform: 'Instagram', img: 'pictures/reel-renovation.jpg' },
 ];
 
-/* SAMPLE testimonials, replace the names and text with REAL reviews
-   from past clients before you publish. Do not present these sample
-   quotes as real. */
+/* Real client testimonials. */
 const TESTIMONIALS = [
-  { name: 'Daniel & Erin M.', where: 'Sold in Grosse Pointe', stars: 5, text: 'Michael made selling our family home feel effortless. He understood what the house was worth and exactly how to position it. We had multiple offers in a weekend.' },
-  { name: 'Priya S.', where: 'First-time buyer, Detroit', stars: 5, text: 'After being outbid again and again, Michael was the one who finally got us home. Patient, honest, and relentless when it mattered.' },
-  { name: 'The Caruso Family', where: 'Relocated to Livonia', stars: 5, text: 'We were moving from out of state and trusted Michael with everything. He treated our search like it was his own. Genuinely the hardest-working agent we have met.' },
+  { name: 'Jena Aderhold', where: 'Bought in Royal Oak', stars: 5, text: 'Michael was extremely helpful in helping us find our new home in Royal Oak. We had a specific criteria in a competitive area, and he was always on top of sending us and showing us new properties. Always available for a text or call, and answered all of our questions!' },
+  { name: 'Edward Mroczka', where: 'Sold his home', stars: 5, text: 'Michael was helpful every step of the way throughout the process of selling my home. Every time we encountered a problem, he handled the issue quickly and calmly. Would definitely recommend his services.' },
 ];
 
 /* ----------------------------------------------------------------
@@ -1137,7 +1136,7 @@ function Testimonials() {
           <h2 className="h2">The people behind<br />the <span className="mark-sun">transactions.</span></h2>
         </div>
 
-        <div className="quotes">
+        <div className={`quotes ${TESTIMONIALS.length === 2 ? 'quotes-2' : ''}`}>
           {TESTIMONIALS.map((q, i) => (
             <div className="quote reveal" key={i}>
               <Stars n={q.stars} />
