@@ -24,7 +24,7 @@ const SITE = {
    While this is empty (''), forms validate and show the success
    state without sending anywhere (great for previewing).
    ---------------------------------------------------------------- */
-const FORM_ENDPOINT = '';
+const FORM_ENDPOINT = 'https://formspree.io/f/mojzbnjg';
 
 /* Stats shown in the trust band. These are honest, defensible
    framings, NOT fabricated sales figures. Once you have real
@@ -101,10 +101,10 @@ const LISTINGS = [
    cover image into /pictures and reference it from `img` to replace the
    placeholder. `tag` is the label shown on the placeholder. */
 const REELS = [
-  { tag: 'Tour: Ferndale bungalow', href: `https://instagram.com/${SITE.social}`, platform: 'Instagram', img: '' },
-  { tag: 'First-time buyer tips', href: `https://tiktok.com/@${SITE.social}`, platform: 'TikTok', img: '' },
-  { tag: 'Just sold, over ask', href: `https://instagram.com/${SITE.social}`, platform: 'Instagram', img: '' },
-  { tag: 'Market in 60 seconds', href: `https://tiktok.com/@${SITE.social}`, platform: 'TikTok', img: '' },
+  { tag: '$775K Detroit House Tour', href: `https://instagram.com/${SITE.social}`, platform: 'Instagram', img: 'pictures/reel-detroit-tour.jpg' },
+  { tag: 'First-Time Home Buyer Tips', href: `https://instagram.com/${SITE.social}`, platform: 'Instagram', img: 'pictures/reel-buyer-tips.jpg' },
+  { tag: 'Inspection Tips', href: `https://instagram.com/${SITE.social}`, platform: 'Instagram', img: 'pictures/reel-inspection-tips.jpg' },
+  { tag: 'My Detroit Renovation: weekly series', href: `https://instagram.com/${SITE.social}`, platform: 'Instagram', img: 'pictures/reel-renovation.jpg' },
 ];
 
 /* SAMPLE testimonials, replace the names and text with REAL reviews
