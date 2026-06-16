@@ -988,6 +988,7 @@ function Work() {
 
         {SOLD.map((p, i) => {
           const over = (() => {
+            if (!p.price || !p.ask) return '';
             const n = (s) => Number(String(s).replace(/[^0-9.]/g, ''));
             const diff = n(p.price) - n(p.ask);
             return diff > 0 ? `+$${Math.round(diff / 1000)}K over ask` : '';
