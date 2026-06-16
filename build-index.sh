@@ -15,7 +15,7 @@ cd "$(dirname "$0")"
 
 OUT="index.html"
 TITLE="Michael Chimienti | Southeast Michigan Realtor"
-DESC="Buying your first place or selling the one you've outgrown across Wayne, Oakland & Macomb. Straight answers, fast moves, and a realtor who picks up the phone."
+DESC="Buying your first place or selling the one you've outgrown, across Michigan. Straight answers, fast moves, real market knowledge, and a realtor who actually picks up the phone."
 URL="https://michaelchimientirealtor.com/"
 OGIMG="https://michaelchimientirealtor.com/pictures/og-image.jpg"
 
