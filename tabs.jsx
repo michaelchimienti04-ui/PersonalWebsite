@@ -151,7 +151,7 @@ function HomeValue() {
 }
 
 function HomeValueForm() {
-  const empty = { fullName: '', email: '', phone: '', address: '', timeline: '' };
+  const empty = { fullName: '', email: '', phone: '', address: '', city: '', state: '', zip: '', timeline: '' };
   const [v, setV] = useState(empty);
   const [errs, setErrs] = useState({});
   const [sent, setSent] = useState(false);
@@ -166,7 +166,11 @@ function HomeValueForm() {
   const validate = () => {
     const e = {};
     if (!v.fullName.trim()) e.fullName = 'Please enter your name.';
-    if (!v.address.trim()) e.address = 'Please enter the property address.';
+    if (!v.address.trim()) e.address = 'Please enter the street address.';
+    if (!v.city.trim()) e.city = 'Please enter the city.';
+    if (!v.state.trim()) e.state = 'Please enter the state.';
+    if (!v.zip.trim()) e.zip = 'Please enter the ZIP code.';
+    else if (!/^\d{5}(-\d{4})?$/.test(v.zip.trim())) e.zip = 'That ZIP doesn’t look right.';
     if (!v.email.trim()) e.email = 'Please enter your email.';
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.email)) e.email = 'That email doesn’t look right.';
     if (!v.phone.trim()) e.phone = 'Please enter a phone number.';
@@ -191,7 +195,7 @@ function HomeValueForm() {
         <div className="form-success">
           <div className="check" aria-hidden="true">✓</div>
           <h3>On its way{v.fullName ? ', ' + v.fullName.split(' ')[0] : ''}.</h3>
-          <p>I'll pull the comps for {v.address || 'your home'} and get your valuation back to you, usually within a day.</p>
+          <p>I'll pull the comps for {[v.address, v.city, [v.state, v.zip].filter(Boolean).join(' ')].filter(Boolean).join(', ') || 'your home'} and get your valuation back to you, usually within a day.</p>
           <p style={{ color: 'var(--ink-faint)' }}>In a hurry? Call {SITE.phone}.</p>
         </div>
       </div>
@@ -204,9 +208,26 @@ function HomeValueForm() {
       <p className="form-sub">Free · no obligation · fields marked * required.</p>
 
       <div className={`field ${errs.address ? 'err' : ''}`}>
-        <label htmlFor="hv-address">Property Address<span className="req"> *</span></label>
-        <input id="hv-address" value={v.address} onChange={set('address')} placeholder="123 Main St, Royal Oak" autoComplete="street-address" />
+        <label htmlFor="hv-address">Street Address<span className="req"> *</span></label>
+        <input id="hv-address" value={v.address} onChange={set('address')} placeholder="123 Main St" autoComplete="address-line1" />
         {errs.address && <div className="field-msg">{errs.address}</div>}
+      </div>
+      <div className={`field ${errs.city ? 'err' : ''}`}>
+        <label htmlFor="hv-city">City<span className="req"> *</span></label>
+        <input id="hv-city" value={v.city} onChange={set('city')} placeholder="Royal Oak" autoComplete="address-level2" />
+        {errs.city && <div className="field-msg">{errs.city}</div>}
+      </div>
+      <div className="field-row">
+        <div className={`field ${errs.state ? 'err' : ''}`}>
+          <label htmlFor="hv-state">State<span className="req"> *</span></label>
+          <input id="hv-state" value={v.state} onChange={set('state')} placeholder="MI" autoComplete="address-level1" />
+          {errs.state && <div className="field-msg">{errs.state}</div>}
+        </div>
+        <div className={`field ${errs.zip ? 'err' : ''}`}>
+          <label htmlFor="hv-zip">ZIP Code<span className="req"> *</span></label>
+          <input id="hv-zip" value={v.zip} onChange={set('zip')} placeholder="48067" inputMode="numeric" autoComplete="postal-code" />
+          {errs.zip && <div className="field-msg">{errs.zip}</div>}
+        </div>
       </div>
       <div className={`field ${errs.fullName ? 'err' : ''}`}>
         <label htmlFor="hv-name">Full Name<span className="req"> *</span></label>
