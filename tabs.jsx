@@ -214,7 +214,7 @@ function HomeValueForm() {
       </div>
       <div className={`field ${errs.city ? 'err' : ''}`}>
         <label htmlFor="hv-city">City<span className="req"> *</span></label>
-        <input id="hv-city" value={v.city} onChange={set('city')} placeholder="Royal Oak" autoComplete="address-level2" />
+        <input id="hv-city" value={v.city} onChange={set('city')} placeholder="Detroit" autoComplete="address-level2" />
         {errs.city && <div className="field-msg">{errs.city}</div>}
       </div>
       <div className="field-row">
